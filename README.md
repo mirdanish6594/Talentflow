@@ -190,22 +190,11 @@ The main candidates list uses `@tanstack/react-virtual` to efficiently render 10
 
 ## 💭 Technical Decisions
 
-### Why MSW over real backend?
-- Eliminates server setup complexity for a frontend-focused assignment.
-- Provides a realistic network simulation, complete with artificial latency and random error rates.
-- Works offline and is perfect for demos.
-- Allows easy simulation of edge cases (e.g., 500 error on reorder).
-
 ### Why IndexedDB with Dexie.js?
 - Provides true persistence across browser sessions, unlike localStorage.
 - Handles large and complex datasets (1000+ candidates, relational data) efficiently.
 - Dexie.js provides a modern, async/await wrapper over the complex IndexedDB API.
 - Browser-native, no external database dependencies required.
-
-### Why Virtualized Lists?
-- It's a hard requirement for handling 1000+ items.
-- Rendering all 1000+ candidates at once would crash the browser.
-- Virtualization ensures 60fps smooth scrolling by only rendering visible DOM nodes.
 
 ### Why React Query?
 - Drastically simplifies server state management, caching, and refetching.
@@ -274,6 +263,3 @@ The application follows a modern SaaS design inspired by Linear and Notion:
 - [ ] Interview scheduling integration
 - [ ] Offer letter generation
 - [ ] Real-time collaboration
-
-## ⚖️ License
-MIT - Built as a technical assignment showcase
