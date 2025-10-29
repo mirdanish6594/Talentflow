@@ -131,12 +131,13 @@ export default function Candidates() {
           ) : (
             <Card>
               <div>
+                {/* --- THIS IS THE HEADER --- */}
                 <div className="grid grid-cols-[auto_1fr_auto_auto_auto] gap-4 p-4 bg-muted/50 font-medium text-sm border-b">
-                  <div className="w-10" />
-                  <div>Name</div>
-                  <div className="w-32">Stage</div>
-                  <div className="w-32">Applied</div>
-                  <div className="w-20" />
+                  <div className="w-10" /> {/* Avatar column */}
+                  <div>Name</div> {/* Name column */}
+                  <div className="w-32">Stage</div> {/* Stage column */}
+                  <div className="w-32">Applied</div> {/* Applied column */}
+                  <div className="w-20" /> {/* View column */}
                 </div>
                 <div ref={parentRef} style={{ height: "600px", overflow: "auto" }}>
                   <div style={{ height: `${rowVirtualizer.getTotalSize()}px`, position: "relative" }}>
@@ -155,16 +156,19 @@ export default function Candidates() {
                           }}
                         >
                           <Link href={`/candidates/${candidate.id}`}>
+                            {/* --- THIS IS THE ROW --- */}
                             <div
                               className="grid grid-cols-[auto_1fr_auto_auto_auto] gap-4 p-4 hover-elevate cursor-pointer transition-all border-b"
                               data-testid={`row-candidate-${candidate.id}`}
                             >
+                              {/* 1. Avatar column (w-10 matches header) */}
                               <Avatar className="h-10 w-10">
                                 <AvatarImage src={candidate.avatarUrl} />
                                 <AvatarFallback className="text-xs">
                                   {getInitials(candidate.name)}
                                 </AvatarFallback>
                               </Avatar>
+                              {/* 2. Name column (1fr matches header) */}
                               <div className="min-w-0">
                                 <p className="font-medium truncate" data-testid={`text-candidate-name-${candidate.id}`}>
                                   {candidate.name}
@@ -173,13 +177,16 @@ export default function Candidates() {
                                   {candidate.email}
                                 </p>
                               </div>
-                              <div className="flex items-center">
+                              {/* 3. Stage column (ADD w-32 to match header) */}
+                              <div className="flex items-center w-32">
                                 <StageBadge stage={candidate.stage} />
                               </div>
-                              <div className="flex items-center text-sm text-muted-foreground">
+                              {/* 4. Applied column (ADD w-32 to match header) */}
+                              <div className="flex items-center text-sm text-muted-foreground w-32">
                                 {new Date(candidate.appliedDate).toLocaleDateString()}
                               </div>
-                              <div className="flex items-center">
+                              {/* 5. View column (ADD w-20 to match header) */}
+                              <div className="flex items-center w-20">
                                 <span className="text-sm text-muted-foreground">View →</span>
                               </div>
                             </div>

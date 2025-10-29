@@ -18,6 +18,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ThemeToggle } from "@/components/theme-toggle"; // <-- Import the toggle
 
 const menuItems = [
   {
@@ -82,17 +83,22 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="p-4">
-        <div className="flex items-center gap-3 rounded-lg border p-3 hover-elevate">
-          <Avatar className="h-9 w-9">
-            <AvatarImage src="" />
-            <AvatarFallback className="bg-primary text-primary-foreground text-xs">
-              HR
-            </AvatarFallback>
-          </Avatar>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium truncate">HR Manager</p>
-            <p className="text-xs text-muted-foreground truncate">hr@talentflow.com</p>
+        {/* --- ADD THIS DIV --- */}
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-3 rounded-lg border p-3 hover-elevate flex-1 min-w-0">
+            <Avatar className="h-9 w-9">
+              <AvatarImage src="" />
+              <AvatarFallback className="bg-primary text-primary-foreground text-xs">
+                HR
+              </AvatarFallback>
+            </Avatar>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium truncate">HR Manager</p>
+              <p className="text-xs text-muted-foreground truncate">hr@talentflow.com</p>
+            </div>
           </div>
+          {/* --- TOGGLE --- */}
+          <ThemeToggle />
         </div>
       </SidebarFooter>
     </Sidebar>
