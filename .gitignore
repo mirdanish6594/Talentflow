@@ -1,1 +1,18 @@
-node_modules
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+
+# Vite build output
+dist/
+dist-ssr/
+
+# Local environment variables
+.env
+.env.local
+
+# IDE & Config
+.vscode/
+.idea/
+.local/
