@@ -1,8 +1,5 @@
-// client/src/lib/queryClient.ts
-
 import { QueryClient, QueryFunction, QueryFunctionContext } from "@tanstack/react-query";
 
-// This helper function is correct
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
     const text = (await res.text()) || res.statusText;
@@ -10,7 +7,6 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
-// This function is fine
 export async function apiRequest(
   method: string,
   url: string,
@@ -27,17 +23,14 @@ export async function apiRequest(
   return res;
 }
 
-//
-// === THIS FUNCTION IS THE FIX ===
-//
+
 type UnauthorizedBehavior = "returnNull" | "throw";
 export const getQueryFn: <T>(options: {
   on401: UnauthorizedBehavior;
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
-  async (context: QueryFunctionContext) => { // Use context
+  async (context: QueryFunctionContext) => { 
     
-    // --- NEW LOGIC TO BUILD URL ---
     const { queryKey } = context;
     
     // 1. Separate string parts (for URL path) from the object part (for query params)
@@ -67,14 +60,11 @@ export const getQueryFn: <T>(options: {
         finalUrl += `?${queryString}`;
       }
     }
-    // --- END OF NEW LOGIC ---
 
-    // Now we use the correctly built finalUrl
     const res = await fetch(finalUrl, {
       credentials: "include",
     });
 
-    // Your existing logic is preserved
     if (unauthorizedBehavior === "returnNull" && res.status === 401) {
       return null;
     }
@@ -83,7 +73,6 @@ export const getQueryFn: <T>(options: {
     return await res.json();
   };
 
-// Your queryClient config is correct and uses the new function
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

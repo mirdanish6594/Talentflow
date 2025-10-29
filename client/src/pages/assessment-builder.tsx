@@ -1,5 +1,3 @@
-// client/src/pages/assessment-builder.tsx
-
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useRoute, Link, useLocation } from "wouter";
@@ -309,9 +307,8 @@ export default function AssessmentBuilder() {
     }
   }, [existingAssessment, isLoading]);
 
-  // --- UPDATED HANDLESAVE FUNCTION ---
+  // --- HANDLESAVE FUNCTION ---
   const handleSave = () => {
-    // Add this guard clause to check for jobId
     if (!jobId) {
       console.error("Cannot save: No Job ID found.");
       return; // Stop execution if jobId is null
@@ -319,10 +316,10 @@ export default function AssessmentBuilder() {
 
     saveAssessment.mutate(
       {
-        jobId, // This is now guaranteed to be a string
+        jobId, 
         data: {
-          jobId, // This is now guaranteed to be a string
-          title: `Assessment for Job ${jobId}`, // This is now guaranteed to be a string
+          jobId, 
+          title: `Assessment for Job ${jobId}`, 
           description: "Job-specific assessment",
           sections,
         },

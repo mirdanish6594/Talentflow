@@ -1,7 +1,4 @@
-// client/src/App.tsx
-
 import { Switch, Route } from "wouter";
-// NO QueryClientProvider or queryClient import here
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
@@ -39,7 +36,6 @@ function App() {
   };
 
   return (
-    // NO QueryClientProvider here
     <TooltipProvider>
       <ThemeProvider>
         <SidebarProvider style={sidebarStyle as React.CSSProperties}>
@@ -60,7 +56,6 @@ function App() {
         <Toaster />
       </ThemeProvider>
     </TooltipProvider>
-    // NO QueryClientProvider here
   );
 }
 

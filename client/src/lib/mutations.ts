@@ -1,11 +1,8 @@
-// client/src/lib/mutations.ts
-
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "./queryClient";
 import { useToast } from "@/hooks/use-toast";
 import type { Job, Candidate, Note, Assessment, InsertJob, InsertNote } from "@shared/schema";
 
-// ... (useCreateJob, useUpdateJob, useReorderJob remain the same) ...
 export function useCreateJob() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
@@ -79,7 +76,6 @@ export function useReorderJob() {
   });
 }
 
-// --- UPDATE THIS MUTATION ---
 
 // 1. Define a type for all variables passed to mutate()
 type UpdateCandidateVars = {

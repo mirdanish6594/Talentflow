@@ -1,6 +1,5 @@
 import { http, HttpResponse, delay } from "msw";
 import { db } from "@/lib/db";
-// Import TimelineEvent
 import type { Job, Candidate, Assessment, TimelineEvent } from "@shared/schema";
 
 // Artificial latency between 200-1200ms
@@ -17,7 +16,7 @@ type RecentActivityEvent = TimelineEvent & {
 };
 
 export const handlers = [
-  // --- ADD THIS NEW STATS HANDLER ---
+  // --- NEW STATS HANDLER ---
   http.get("/api/stats", async () => {
     await randomDelay();
     
@@ -36,7 +35,7 @@ export const handlers = [
     return HttpResponse.json(stats);
   }),
 
-  // --- ADD THIS NEW RECENT ACTIVITY HANDLER ---
+  // --- RECENT ACTIVITY HANDLER ---
   http.get("/api/timeline/recent", async () => {
     await randomDelay();
 

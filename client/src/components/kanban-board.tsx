@@ -1,5 +1,3 @@
-// client/src/components/kanban/KanbanBoard.tsx
-
 import { useState } from "react";
 import {
   DndContext,

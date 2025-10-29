@@ -1,5 +1,3 @@
-// client/src/pages/dashboard.tsx
-
 import { useQuery } from "@tanstack/react-query";
 import { 
   Briefcase, 
@@ -11,13 +9,12 @@ import {
   FileText
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
-// Import new types and components
 import { StageBadge } from "@/components/status-badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Link } from "wouter";
 import type { TimelineEvent } from "@shared/schema";
 
-// Define the types for our new data
+// Defining the types for our new data
 type DashboardStats = {
   activeJobs: number;
   totalCandidates: number;
@@ -205,7 +202,7 @@ export default function Dashboard() {
           </div>
         </Card>
 
-        {/* --- UPDATED RECENT ACTIVITY CARD --- */}
+        {/* --- RECENT ACTIVITY CARD --- */}
         <Card className="p-6">
           <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
           <div className="space-y-4">

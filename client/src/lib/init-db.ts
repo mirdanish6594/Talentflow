@@ -17,11 +17,9 @@ const STAGES: CandidateStage[] = [
 
 export async function initializeDatabase() {
   try {
-    // === ADD THESE LINES TO FORCE CLEAR ===
     console.log("Forcibly clearing database for development...");
-    await db.delete(); // Delete the database
-    await db.open();   // Re-open the connection
-    // ======================================
+    await db.delete(); 
+    await db.open();  
 
     // Check if data already exists
     const jobCount = await db.jobs.count();
@@ -70,7 +68,7 @@ export async function initializeDatabase() {
 
     // === 3. Create Assessments ===
     const assessments: Assessment[] = [];
-    // Just create 3 for the first 3 jobs
+
     for (let i = 0; i < 3; i++) {
       assessments.push({
         id: crypto.randomUUID(),
